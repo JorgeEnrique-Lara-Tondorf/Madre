@@ -5,29 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Página especial del Día de la Madre">
   <title>Feliz Día de la Madre 💐</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- CANVAS flores cayendo -->
   <canvas id="flowerCanvas" aria-hidden="true"></canvas>
 
-  <!-- CONTROLES FLOTANTES -->
-  <div class="controls-bar" role="toolbar" aria-label="Controles de la página">
-    <button class="ctrl-btn" id="musicBtn" aria-label="Activar música" title="Música">🎵</button>
-    <button class="ctrl-btn" id="colorBtn" aria-label="Cambiar tema de color" title="Cambiar colores">🎨</button>
+  <div class="controls-bar" role="toolbar" aria-label="Controles">
+    <button class="ctrl-btn" id="musicBtn" title="Música">🎵</button>
+    <button class="ctrl-btn" id="colorBtn" title="Cambiar colores">🎨</button>
   </div>
 
-  <!-- TOAST -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- HERO HEADER -->
+  <!-- ── HERO ── -->
   <header>
     <div class="deco-circle deco-circle-1" aria-hidden="true"></div>
     <div class="deco-circle deco-circle-2" aria-hidden="true"></div>
@@ -35,8 +29,8 @@
       <span class="badge">✿ Para ti, mamá ✿</span>
       <h1 class="hero-title">Feliz<br><em>Día de la Madre</em></h1>
       <p class="hero-subtitle">Con todo mi amor, siempre</p>
-      <div class="scroll-hint" aria-label="Desliza hacia abajo para ver más">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <div class="scroll-hint" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 5v14M5 12l7 7 7-7"/>
         </svg>
         <span>Desliza hacia abajo</span>
@@ -44,12 +38,10 @@
     </div>
   </header>
 
-  <!-- MENSAJE PRINCIPAL -->
-  <section class="message-section fade-in" aria-labelledby="msg-title">
+  <!-- ── MENSAJE ── -->
+  <section class="message-section fade-in">
     <span class="section-label">✦ Mi mensaje ✦</span>
-    <h2 class="message-title" id="msg-title">
-      Para la persona más<br>especial de mi vida
-    </h2>
+    <h2 class="message-title">Para la persona más<br>especial de mi vida</h2>
     <div class="message-body">
       <p>Mamá, hay palabras que se quedan pequeñas cuando intento describir todo lo que significas para mí. Eres mi primer hogar, mi refugio en las tormentas y la razón por la que sé lo que es el amor incondicional.</p>
       <p>Cada abrazo tuyo me recuerda que todo va a estar bien. Cada consejo que me has dado lleva en él años de sabiduría y cariño. No hay forma de devolverte todo lo que me has dado, pero quiero que sepas que te llevo en el corazón cada día.</p>
@@ -62,114 +54,118 @@
     </div>
   </section>
 
-  <!-- GALERÍA POLAROID -->
-  <div class="polaroid-strip fade-in">
-    <div class="polaroid">
-      <div class="polaroid-img" aria-hidden="true">🌸</div>
-      <p class="polaroid-label">Siempre juntas</p>
-    </div>
-    <div class="polaroid">
-      <div class="polaroid-img" aria-hidden="true">💐</div>
-      <p class="polaroid-label">Para siempre</p>
-    </div>
-    <div class="polaroid">
-      <div class="polaroid-img" aria-hidden="true">🌷</div>
-      <p class="polaroid-label">Te quiero, mamá</p>
-    </div>
-    <div class="polaroid">
-      <div class="polaroid-img" aria-hidden="true">💖</div>
-      <p class="polaroid-label">Mi favorita</p>
-    </div>
-  </div>
-
-  <!-- FOTOS -->
-  <section class="photos-section fade-in" aria-labelledby="photos-title">
-    <h2 class="photos-title" id="photos-title">Nuestros momentos juntos</h2>
-    <p class="photos-hint">Haz clic en los marcos para añadir tus fotos 📷</p>
+  <!-- ── GALERÍA DE 8 FOTOS ── -->
+  <section class="photos-section fade-in">
+    <span class="section-label" style="text-align:center;display:block;">✦ Nuestros momentos ✦</span>
+    <h2 class="photos-title">Nuestros momentos juntos</h2>
     <div class="photos-grid">
 
-      <div class="photo-card">
-        <label class="upload-slot" for="upload1">
-          <input type="file" id="upload1" accept="image/*" onchange="loadPhoto(this)">
-          <span class="upload-icon" aria-hidden="true">📷</span>
-          <span class="upload-text">Añade una foto aquí</span>
-        </label>
+      <!-- Foto 1 — WIDE (2 columnas) -->
+      <div class="photo-card photo-card--wide">
+        <img src="images/WhatsApp Image 2026-05-03 at 11.11.01.jpeg" alt="El recuerdo más bonito" loading="lazy">
         <div class="photo-caption">
-          <h3>Recuerdo especial</h3>
-          <p>Un momento que siempre llevaré en el corazón.</p>
+          <h3>El recuerdo más bonito</h3>
+          <p>El momento que siempre guardaré en el corazón.</p>
         </div>
       </div>
 
+      <!-- Foto 2 -->
       <div class="photo-card">
-        <label class="upload-slot" for="upload2">
-          <input type="file" id="upload2" accept="image/*" onchange="loadPhoto(this)">
-          <span class="upload-icon" aria-hidden="true">🌸</span>
-          <span class="upload-text">Añade una foto aquí</span>
-        </label>
+        <img src="images/WhatsApp Image 2026-05-03 at 11.11.02 (1).jpeg" alt="Siempre juntas" loading="lazy">
         <div class="photo-caption">
-          <h3>Juntas siempre</h3>
+          <h3>Siempre juntas</h3>
           <p>Porque los mejores momentos son contigo.</p>
         </div>
       </div>
 
+      <!-- Foto 3 -->
       <div class="photo-card">
-        <label class="upload-slot" for="upload3">
-          <input type="file" id="upload3" accept="image/*" onchange="loadPhoto(this)">
-          <span class="upload-icon" aria-hidden="true">💐</span>
-          <span class="upload-text">Añade una foto aquí</span>
-        </label>
+        <img src="images/WhatsApp Image 2026-05-03 at 11.11.02 (2).jpeg" alt="Mi favorita" loading="lazy">
         <div class="photo-caption">
           <h3>Mi favorita</h3>
           <p>Esa sonrisa que ilumina cualquier lugar.</p>
         </div>
       </div>
 
+      <!-- Foto 4 -->
       <div class="photo-card">
-        <label class="upload-slot" for="upload4">
-          <input type="file" id="upload4" accept="image/*" onchange="loadPhoto(this)">
-          <span class="upload-icon" aria-hidden="true">💖</span>
-          <span class="upload-text">Añade una foto aquí</span>
-        </label>
+        <img src="images/WhatsApp Image 2026-05-03 at 11.11.02.jpeg" alt="Para recordar" loading="lazy">
         <div class="photo-caption">
           <h3>Para recordar</h3>
+          <p>Un momento único e irrepetible.</p>
+        </div>
+      </div>
+
+      <!-- Foto 5 -->
+      <div class="photo-card">
+        <img src="images/WhatsApp Image 2026-05-03 at 11.11.04 (1).jpeg" alt="Nuestra aventura" loading="lazy">
+        <div class="photo-caption">
+          <h3>Nuestra aventura</h3>
           <p>Mil aventuras más están por venir.</p>
+        </div>
+      </div>
+
+      <!-- Foto 6 -->
+      <div class="photo-card">
+        <img src="images/WhatsApp Image 2026-05-03 at 11.11.04.jpeg" alt="Tu sonrisa" loading="lazy">
+        <div class="photo-caption">
+          <h3>Tu sonrisa</h3>
+          <p>La que alegra todos mis días.</p>
+        </div>
+      </div>
+
+      <!-- Foto 7 -->
+      <div class="photo-card">
+        <img src="images/WhatsApp Image 2026-05-03 at 11.19.57.jpeg" alt="Juntas siempre" loading="lazy">
+        <div class="photo-caption">
+          <h3>Juntas siempre</h3>
+          <p>Cada foto, una historia que contar.</p>
+        </div>
+      </div>
+
+      <!-- Foto 8 — WIDE (2 columnas) -->
+      <div class="photo-card photo-card--wide">
+        <img src="images/WhatsApp Image 2026-05-03 at 11.20.36.jpeg" alt="Y muchos más por venir" loading="lazy">
+        <div class="photo-caption">
+          <h3>Y muchos más por venir</h3>
+          <p>Porque nuestra historia no ha terminado, mamá.</p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- RAZONES -->
-  <section class="reasons-section fade-in" aria-labelledby="reasons-title">
-    <h2 class="reasons-title" id="reasons-title">Por qué eres la mejor mamá</h2>
+  <!-- ── RAZONES ── -->
+  <section class="reasons-section fade-in">
+    <h2 class="reasons-title">Por qué eres la mejor mamá</h2>
     <ul class="reasons-list">
       <li class="reason-item">
-        <span class="reason-number" aria-hidden="true">01</span>
+        <span class="reason-number">01</span>
         <span class="reason-text">Porque siempre estás ahí, en los momentos difíciles y en los felices, sin necesidad de que te pida nada.</span>
       </li>
       <li class="reason-item">
-        <span class="reason-number" aria-hidden="true">02</span>
+        <span class="reason-number">02</span>
         <span class="reason-text">Porque me enseñaste que el amor verdadero se demuestra con hechos, no solo con palabras.</span>
       </li>
       <li class="reason-item">
-        <span class="reason-number" aria-hidden="true">03</span>
+        <span class="reason-number">03</span>
         <span class="reason-text">Porque tu cocina sabe a hogar y tu abrazo es el lugar más seguro del mundo.</span>
       </li>
       <li class="reason-item">
-        <span class="reason-number" aria-hidden="true">04</span>
+        <span class="reason-number">04</span>
         <span class="reason-text">Porque nunca me dejaste rendirme cuando todo parecía imposible y creíste en mí incluso cuando yo no lo hacía.</span>
       </li>
       <li class="reason-item">
-        <span class="reason-number" aria-hidden="true">05</span>
+        <span class="reason-number">05</span>
         <span class="reason-text">Porque eres mi ejemplo, mi inspiración y la persona que más admiro en este mundo. ¡Eres increíble! 🌷</span>
       </li>
     </ul>
   </section>
 
-  <!-- POEMA -->
-  <section class="poem-section fade-in" aria-labelledby="poem-title">
+  <!-- ── POEMA ── -->
+  <section class="poem-section fade-in">
     <div class="poem-card">
-      <span class="poem-label" id="poem-title">✦ Con todo mi amor ✦</span>
+      <span class="poem-label">✦ Con todo mi amor ✦</span>
       <blockquote class="poem-text">
         En cada paso que doy<br>
         hay una mano que me guió,<br>
@@ -188,7 +184,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ── FOOTER ── -->
   <footer>
     <span class="footer-heart" aria-hidden="true">💗</span>
     <p class="footer-title">Te quiero muchísimo, mamá</p>
