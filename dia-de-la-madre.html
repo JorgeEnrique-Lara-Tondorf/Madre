@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Día de la Madre 💐</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --color-bg:        #fdf6f0;
+      --color-surface:   #fff9f5;
+      --color-border:    rgba(180,100,80,0.12);
+      --color-text:      #3a1c10;
+      --color-text-muted:#8a5c4a;
+      --color-accent:    #c45b6a;
+      --color-accent-2:  #e8a0a8;
+      --color-gold:      #d4a050;
+      --font-display:    'Cormorant Garamond', Georgia, serif;
+      --font-body:       'Nunito', 'Helvetica Neue', sans-serif;
+      --space-2:  0.5rem;
+      --space-4:  1rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1.25rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 2px 8px rgba(180,80,80,0.07);
+      --shadow-md: 0 6px 24px rgba(180,80,80,0.12);
+      --shadow-lg: 0 16px 48px rgba(180,80,80,0.16);
+      --transition: 220ms cubic-bezier(0.16,1,0.3,1);
+    }
+
+    /* ── BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      color: var(--color-text);
+      background: var(--color-bg);
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+    img { display:block; max-width:100%; height:auto; }
+
+    /* ── PETALS ANIMATION ── */
+    .petals-container {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -60px;
+      width: 18px; height: 22px;
+      border-radius: 50% 0 50% 0;
+      opacity: 0.7;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(-60px) rotate(0deg) translateX(0); opacity: 0.8; }
+      100% { transform: translateY(110vh) rotate(720deg) translateX(40px); opacity: 0; }
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      min-height: 100svh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: var(--space-12) var(--space-4);
+      background: linear-gradient(160deg, #fce4e8 0%, #fdf0e8 50%, #fce8f0 100%);
+      overflow: hidden;
+      z-index: 1;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(230,160,168,0.35) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(212,160,80,0.2) 0%, transparent 55%);
+      z-index: 0;
+    }
+    .header-content { position: relative; z-index: 1; max-width: 700px; }
+    .badge {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: rgba(196,91,106,0.1);
+      padding: 0.35em 1em;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-6);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 1rem + 7vw, 7.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--color-text);
+      margin-bottom: var(--space-4);
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 0.9rem + 1.5vw, 2rem);
+      font-style: italic;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-8);
+      font-weight: 400;
+    }
+    .scroll-hint {
+      display: flex; flex-direction: column; align-items: center; gap: var(--space-2);
+      color: var(--color-text-muted); font-size: 0.85rem; letter-spacing: 0.05em;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .scroll-hint svg { opacity: 0.5; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; }
+
+    /* ── MENSAJE PRINCIPAL ── */
+    .message-section {
+      padding: var(--space-24) var(--space-4);
+      max-width: 780px; margin-inline: auto;
+      text-align: center;
+    }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-4);
+    }
+    .message-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 1rem + 3.5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: var(--space-8);
+      color: var(--color-text);
+    }
+    .message-body {
+      font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+      line-height: 1.85;
+      color: var(--color-text-muted);
+      max-width: 65ch; margin-inline: auto;
+    }
+    .message-body p + p { margin-top: var(--space-4); }
+    .divider {
+      display: flex; align-items: center; justify-content: center; gap: var(--space-4);
+      margin: var(--space-12) auto;
+      max-width: 300px;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--color-border); }
+    .divider-icon { color: var(--color-accent); font-size: 1.2rem; }
+
+    /* ── FOTOS ── */
+    .photos-section {
+      padding: var(--space-16) var(--space-4) var(--space-24);
+      background: linear-gradient(180deg, var(--color-bg) 0%, #fce8f0 50%, var(--color-bg) 100%);
+    }
+    .photos-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 1rem + 2.5vw, 3.2rem);
+      font-weight: 600; font-style: italic;
+      text-align: center;
+      margin-bottom: var(--space-12);
+      color: var(--color-text);
+    }
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(280px,100%), 1fr));
+      gap: var(--space-6);
+      max-width: 1100px; margin-inline: auto;
+    }
+    .photo-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .photo-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px) rotate(-0.5deg);
+    }
+    .photo-card:nth-child(even):hover {
+      transform: translateY(-4px) rotate(0.5deg);
+    }
+    .photo-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover;
+      background: linear-gradient(135deg, #f8d7dd 0%, #fce4bc 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .photo-card img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      transition: transform 400ms cubic-bezier(0.16,1,0.3,1);
+    }
+    .photo-card:hover img { transform: scale(1.04); }
+    .photo-caption {
+      padding: var(--space-4) var(--space-6);
+    }
+    .photo-caption h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 1rem + 0.6vw, 1.6rem);
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: var(--space-2);
+    }
+    .photo-caption p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+    /* UPLOAD SLOT */
+    .upload-slot {
+      border: 2px dashed rgba(196,91,106,0.35);
+      background: rgba(196,91,106,0.04);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: var(--space-4);
+      cursor: pointer;
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4/3;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .upload-slot:hover {
+      background: rgba(196,91,106,0.09);
+      border-color: var(--color-accent);
+    }
+    .upload-slot input { display: none; }
+    .upload-icon { font-size: 2.5rem; }
+    .upload-text { font-size: 0.9rem; color: var(--color-accent); font-weight: 600; text-align: center; }
+
+    /* ── RAZONES ── */
+    .reasons-section {
+      padding: var(--space-24) var(--space-4);
+      max-width: 900px; margin-inline: auto;
+    }
+    .reasons-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 1rem + 3vw, 3.5rem);
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: var(--space-12);
+      color: var(--color-text);
+    }
+    .reasons-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: var(--space-4);
+    }
+    .reason-item {
+      display: flex; align-items: flex-start; gap: var(--space-6);
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6) var(--space-8);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .reason-item:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateX(4px);
+    }
+    .reason-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 1.5rem + 1vw, 3rem);
+      font-weight: 600;
+      color: var(--color-accent-2);
+      line-height: 1;
+      min-width: 2.5rem;
+    }
+    .reason-text {
+      font-size: clamp(1rem, 0.95rem + 0.2vw, 1.15rem);
+      color: var(--color-text);
+      line-height: 1.7;
+      padding-top: 0.2em;
+    }
+
+    /* ── POEMA ── */
+    .poem-section {
+      padding: var(--space-24) var(--space-4);
+      background: linear-gradient(135deg, #fce4e8 0%, #fdf0e8 100%);
+      text-align: center;
+    }
+    .poem-card {
+      max-width: 600px; margin-inline: auto;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius-lg);
+      padding: var(--space-12) var(--space-12);
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(196,91,106,0.15);
+    }
+    .poem-label {
+      font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--color-gold); font-weight: 600; margin-bottom: var(--space-6);
+    }
+    .poem-text {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 0.9rem + 0.7vw, 1.5rem);
+      font-style: italic;
+      line-height: 2;
+      color: var(--color-text);
+    }
+    .poem-author {
+      margin-top: var(--space-6);
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: var(--space-24) var(--space-4) var(--space-12);
+      text-align: center;
+    }
+    .footer-heart {
+      font-size: clamp(3rem, 2rem + 3vw, 6rem);
+      margin-bottom: var(--space-6);
+      display: block;
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14%       { transform: scale(1.15); }
+      28%       { transform: scale(1); }
+      42%       { transform: scale(1.08); }
+      56%       { transform: scale(1); }
+    }
+    .footer-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 1rem + 3.5vw, 5rem);
+      font-weight: 600;
+      color: var(--color-accent);
+      margin-bottom: var(--space-4);
+    }
+    .footer-sub {
+      font-size: 1rem; color: var(--color-text-muted);
+    }
+
+    /* ── FADE IN ON SCROLL ── */
+    .fade-in { opacity: 1; }
+    @supports (animation-timeline: scroll()) {
+      .fade-in {
+        opacity: 0;
+        animation: reveal-fade linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 80%;
+      }
+      @keyframes reveal-fade { to { opacity: 1; } }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .photo-card:hover { transform: translateY(-2px) rotate(0); }
+      .reason-item { flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-4); }
+      .poem-card { padding: var(--space-8) var(--space-6); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PÉTALS ANIMADOS -->
+  <div class="petals-container" id="petals" aria-hidden="true"></div>
+
+  <!-- ENCABEZADO HERO -->
+  <header>
+    <div class="header-content">
+      <span class="badge">✿ Para ti, mamá ✿</span>
+      <h1 class="hero-title">Feliz<br><em>Día de la Madre</em></h1>
+      <p class="hero-subtitle">Con todo mi amor, siempre</p>
+      <div class="scroll-hint">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        <span>Desliza hacia abajo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENSAJE PRINCIPAL -->
+  <section class="message-section fade-in">
+    <p class="section-label">✦ Mi mensaje ✦</p>
+    <h2 class="message-title">Para la persona más<br>especial de mi vida</h2>
+    <div class="message-body">
+      <p>Mamá, hay palabras que se quedan pequeñas cuando intento describir todo lo que significas para mí. Eres mi primer hogar, mi refugio en las tormentas y la razón por la que sé lo que es el amor incondicional.</p>
+      <p>Cada abrazo tuyo me recuerda que todo va a estar bien. Cada consejo que me has dado lleva en él años de sabiduría y cariño. No hay forma de devolverte todo lo que me has dado, pero quiero que sepas que te llevo en el corazón cada día.</p>
+      <p>Gracias por ser tú. Gracias por existir. Gracias por ser mi mamá. 🌸</p>
+    </div>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-icon">❋</div>
+      <div class="divider-line"></div>
+    </div>
+  </section>
+
+  <!-- FOTOS -->
+  <section class="photos-section fade-in">
+    <h2 class="photos-title">Nuestros momentos juntos</h2>
+    <p style="text-align:center; color:var(--color-text-muted); margin-bottom: 2rem; font-size: 0.95rem;">
+      Haz clic en los marcos vacíos para añadir tus fotos 📷
+    </p>
+    <div class="photos-grid" id="photoGrid">
+
+      <!-- Foto 1 — slot para subir -->
+      <div class="photo-card" id="card1">
+        <label class="upload-slot" for="upload1" title="Añadir foto">
+          <input type="file" id="upload1" accept="image/*" onchange="loadPhoto(this,'img1','cap1')">
+          <span class="upload-icon">📷</span>
+          <span class="upload-text">Añade una foto aquí</span>
+        </label>
+        <div class="photo-caption">
+          <h3>Recuerdo especial</h3>
+          <p>Un momento que siempre llevaré en el corazón.</p>
+        </div>
+      </div>
+
+      <!-- Foto 2 -->
+      <div class="photo-card" id="card2">
+        <label class="upload-slot" for="upload2" title="Añadir foto">
+          <input type="file" id="upload2" accept="image/*" onchange="loadPhoto(this,'img2','cap2')">
+          <span class="upload-icon">🌸</span>
+          <span class="upload-text">Añade una foto aquí</span>
+        </label>
+        <div class="photo-caption">
+          <h3>Juntas siempre</h3>
+          <p>Porque los mejores momentos son contigo.</p>
+        </div>
+      </div>
+
+      <!-- Foto 3 -->
+      <div class="photo-card" id="card3">
+        <label class="upload-slot" for="upload3" title="Añadir foto">
+          <input type="file" id="upload3" accept="image/*" onchange="loadPhoto(this,'img3','cap3')">
+          <span class="upload-icon">💐</span>
+          <span class="upload-text">Añade una foto aquí</span>
+        </label>
+        <div class="photo-caption">
+          <h3>Mi favorita</h3>
+          <p>Esa sonrisa que ilumina cualquier lugar.</p>
+        </div>
+      </div>
+
+      <!-- Foto 4 -->
+      <div class="photo-card" id="card4">
+        <label class="upload-slot" for="upload4" title="Añadir foto">
+          <input type="file" id="upload4" accept="image/*" onchange="loadPhoto(this,'img4','cap4')">
+          <span class="upload-icon">💖</span>
+          <span class="upload-text">Añade una foto aquí</span>
+        </label>
+        <div class="photo-caption">
+          <h3>Para recordar</h3>
+          <p>Mil aventuras más están por venir.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RAZONES -->
+  <section class="reasons-section fade-in">
+    <h2 class="reasons-title">Por qué eres la mejor mamá</h2>
+    <ul class="reasons-list">
+      <li class="reason-item">
+        <span class="reason-number">01</span>
+        <span class="reason-text">Porque siempre estás ahí, en los momentos difíciles y en los felices, sin necesidad de que te pida nada.</span>
+      </li>
+      <li class="reason-item">
+        <span class="reason-number">02</span>
+        <span class="reason-text">Porque me enseñaste que el amor verdadero se demuestra con hechos, no solo con palabras.</span>
+      </li>
+      <li class="reason-item">
+        <span class="reason-number">03</span>
+        <span class="reason-text">Porque tu cocina sabe a hogar y tu abrazo es el lugar más seguro del mundo.</span>
+      </li>
+      <li class="reason-item">
+        <span class="reason-number">04</span>
+        <span class="reason-text">Porque nunca me dejaste rendirme cuando todo parecía imposible y creíste en mí incluso cuando yo no lo hacía.</span>
+      </li>
+      <li class="reason-item">
+        <span class="reason-number">05</span>
+        <span class="reason-text">Porque eres mi ejemplo, mi inspiración y la persona que más admiro en este mundo. ¡Eres increíble! 🌷</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- POEMA -->
+  <section class="poem-section fade-in">
+    <div class="poem-card">
+      <p class="poem-label">✦ Con todo mi amor ✦</p>
+      <blockquote class="poem-text">
+        En cada paso que doy<br>
+        hay una mano que me guió,<br>
+        en cada sonrisa que doy<br>
+        hay un amor que me enseñó.<br><br>
+        Eres el sol de mi mañana,<br>
+        la calma en cada tempestad,<br>
+        el hogar donde regreso<br>
+        cuando busco la verdad.<br><br>
+        Gracias, mamá, por todo,<br>
+        por lo que ves y lo que no,<br>
+        por quererme sin medida…<br>
+        nadie lo hace como tú.
+      </blockquote>
+      <p class="poem-author">— Con amor ❤️</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="fade-in">
+    <span class="footer-heart" aria-hidden="true">💗</span>
+    <p class="footer-title">Te quiero muchísimo, mamá</p>
+    <p class="footer-sub">Feliz Día de la Madre · 2025</p>
+  </footer>
+
+  <script>
+    /* ── PÉTALS ── */
+    (function(){
+      const container = document.getElementById('petals');
+      const colors = ['#f9c4cb','#f7a8b5','#fad5a0','#f9dde6','#fbc8d0','#faecd5'];
+      function makePetal(){
+        const p = document.createElement('div');
+        p.className = 'petal';
+        p.style.left = Math.random()*100 + 'vw';
+        p.style.background = colors[Math.floor(Math.random()*colors.length)];
+        const size = 12 + Math.random()*14;
+        p.style.width  = size + 'px';
+        p.style.height = (size*1.2) + 'px';
+        p.style.opacity = 0.4 + Math.random()*0.5;
+        const dur = 6 + Math.random()*8;
+        p.style.animationDuration = dur + 's';
+        p.style.animationDelay = '-' + (Math.random()*dur) + 's';
+        container.appendChild(p);
+        setTimeout(()=>{
+          if(p.parentNode) p.parentNode.removeChild(p);
+          makePetal();
+        }, dur*1000 + 500);
+      }
+      for(let i=0; i<18; i++) makePetal();
+    })();
+
+    /* ── CARGAR FOTOS ── */
+    function loadPhoto(input, imgId, capId) {
+      const file = input.files[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      const card = input.closest('.photo-card');
+      const label = input.closest('label');
+      // Crear imagen real
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = 'Foto especial con mamá';
+      img.width = 400; img.height = 300;
+      img.loading = 'lazy';
+      img.style.cssText = 'width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 400ms cubic-bezier(0.16,1,0.3,1);display:block;';
+      label.replaceWith(img);
+      card.addEventListener('mouseenter', ()=>{ img.style.transform = 'scale(1.04)'; });
+      card.addEventListener('mouseleave', ()=>{ img.style.transform = 'scale(1)'; });
+    }
+  </script>
+</body>
+</html>
