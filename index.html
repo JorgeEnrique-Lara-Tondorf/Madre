@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página especial del Día de la Madre">
+  <title>Feliz Día de la Madre 💐</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CANVAS flores cayendo -->
+  <canvas id="flowerCanvas" aria-hidden="true"></canvas>
+
+  <!-- CONTROLES FLOTANTES -->
+  <div class="controls-bar" role="toolbar" aria-label="Controles de la página">
+    <button class="ctrl-btn" id="musicBtn" aria-label="Activar música" title="Música">🎵</button>
+    <button class="ctrl-btn" id="colorBtn" aria-label="Cambiar tema de color" title="Cambiar colores">🎨</button>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- HERO HEADER -->
+  <header>
+    <div class="deco-circle deco-circle-1" aria-hidden="true"></div>
+    <div class="deco-circle deco-circle-2" aria-hidden="true"></div>
+    <div class="header-content">
+      <span class="badge">✿ Para ti, mamá ✿</span>
+      <h1 class="hero-title">Feliz<br><em>Día de la Madre</em></h1>
+      <p class="hero-subtitle">Con todo mi amor, siempre</p>
+      <div class="scroll-hint" aria-label="Desliza hacia abajo para ver más">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+        <span>Desliza hacia abajo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENSAJE PRINCIPAL -->
+  <section class="message-section fade-in" aria-labelledby="msg-title">
+    <span class="section-label">✦ Mi mensaje ✦</span>
+    <h2 class="message-title" id="msg-title">
+      Para la persona más<br>especial de mi vida
+    </h2>
+    <div class="message-body">
+      <p>Mamá, hay palabras que se quedan pequeñas cuando intento describir todo lo que significas para mí. Eres mi primer hogar, mi refugio en las tormentas y la razón por la que sé lo que es el amor incondicional.</p>
+      <p>Cada abrazo tuyo me recuerda que todo va a estar bien. Cada consejo que me has dado lleva en él años de sabiduría y cariño. No hay forma de devolverte todo lo que me has dado, pero quiero que sepas que te llevo en el corazón cada día.</p>
+      <p>Gracias por ser tú. Gracias por existir. Gracias por ser mi mamá. 🌸</p>
+    </div>
+    <div class="divider" aria-hidden="true">
+      <div class="divider-line"></div>
+      <div class="divider-icon">❋</div>
+      <div class="divider-line"></div>
+    </div>
+  </section>
+
+  <!-- GALERÍA POLAROID -->
+  <div class="polaroid-strip fade-in">
+    <div class="polaroid">
+      <div class="polaroid-img" aria-hidden="true">🌸</div>
+      <p class="polaroid-label">Siempre juntas</p>
+    </div>
+    <div class="polaroid">
+      <div class="polaroid-img" aria-hidden="true">💐</div>
+      <p class="polaroid-label">Para siempre</p>
+    </div>
+    <div class="polaroid">
+      <div class="polaroid-img" aria-hidden="true">🌷</div>
+      <p class="polaroid-label">Te quiero, mamá</p>
+    </div>
+    <div class="polaroid">
+      <div class="polaroid-img" aria-hidden="true">💖</div>
+      <p class="polaroid-label">Mi favorita</p>
+    </div>
+  </div>
+
+  <!-- FOTOS -->
+  <section class="photos-section fade-in" aria-labelledby="photos-title">
+    <h2 class="photos-title" id="photos-title">Nuestros momentos juntos</h2>
+    <p class="photos-hint">Haz clic en los marcos para añadir tus fotos 📷</p>
+    <div class="photos-grid">
+
+      <div class="photo-card">
+        <label class="upload-slot" for="upload1">
+          <input type="file" id="upload1" accept="image/*" onchange="loadPhoto(this)">
+          <span class="upload-icon" aria-hidden="true">📷</span>
+          <span class="upload-text">Añade una foto aquí</span>
+        </label>
+        <div class="photo-caption">
+          <h3>Recuerdo especial</h3>
+          <p>Un momento que siempre llevaré en el corazón.</p>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <label class="upload-slot" for="upload2">
+          <input type="file" id="upload2" accept="image/*" onchange="loadPhoto(this)">
+          <span class="upload-icon" aria-hidden="true">🌸</span>
+          <span class="upload-text">Añade una foto aquí</span>
+        </label>
+        <div class="photo-caption">
+          <h3>Juntas siempre</h3>
+          <p>Porque los mejores momentos son contigo.</p>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <label class="upload-slot" for="upload3">
+          <input type="file" id="upload3" accept="image/*" onchange="loadPhoto(this)">
+          <span class="upload-icon" aria-hidden="true">💐</span>
+          <span class="upload-text">Añade una foto aquí</span>
+        </label>
+        <div class="photo-caption">
+          <h3>Mi favorita</h3>
+          <p>Esa sonrisa que ilumina cualquier lugar.</p>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <label class="upload-slot" for="upload4">
+          <input type="file" id="upload4" accept="image/*" onchange="loadPhoto(this)">
+          <span class="upload-icon" aria-hidden="true">💖</span>
+          <span class="upload-text">Añade una foto aquí</span>
+        </label>
+        <div class="photo-caption">
+          <h3>Para recordar</h3>
+          <p>Mil aventuras más están por venir.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RAZONES -->
+  <section class="reasons-section fade-in" aria-labelledby="reasons-title">
+    <h2 class="reasons-title" id="reasons-title">Por qué eres la mejor mamá</h2>
+    <ul class="reasons-list">
+      <li class="reason-item">
+        <span class="reason-number" aria-hidden="true">01</span>
+        <span class="reason-text">Porque siempre estás ahí, en los momentos difíciles y en los felices, sin necesidad de que te pida nada.</span>
+      </li>
+      <li class="reason-item">
+        <span class="reason-number" aria-hidden="true">02</span>
+        <span class="reason-text">Porque me enseñaste que el amor verdadero se demuestra con hechos, no solo con palabras.</span>
+      </li>
+      <li class="reason-item">
+        <span class="reason-number" aria-hidden="true">03</span>
+        <span class="reason-text">Porque tu cocina sabe a hogar y tu abrazo es el lugar más seguro del mundo.</span>
+      </li>
+      <li class="reason-item">
+        <span class="reason-number" aria-hidden="true">04</span>
+        <span class="reason-text">Porque nunca me dejaste rendirme cuando todo parecía imposible y creíste en mí incluso cuando yo no lo hacía.</span>
+      </li>
+      <li class="reason-item">
+        <span class="reason-number" aria-hidden="true">05</span>
+        <span class="reason-text">Porque eres mi ejemplo, mi inspiración y la persona que más admiro en este mundo. ¡Eres increíble! 🌷</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- POEMA -->
+  <section class="poem-section fade-in" aria-labelledby="poem-title">
+    <div class="poem-card">
+      <span class="poem-label" id="poem-title">✦ Con todo mi amor ✦</span>
+      <blockquote class="poem-text">
+        En cada paso que doy<br>
+        hay una mano que me guió,<br>
+        en cada sonrisa que doy<br>
+        hay un amor que me enseñó.<br><br>
+        Eres el sol de mi mañana,<br>
+        la calma en cada tempestad,<br>
+        el hogar donde regreso<br>
+        cuando busco la verdad.<br><br>
+        Gracias, mamá, por todo,<br>
+        por lo que ves y lo que no,<br>
+        por quererme sin medida…<br>
+        nadie lo hace como tú.
+      </blockquote>
+      <p class="poem-author">— Con amor ❤️</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-heart" aria-hidden="true">💗</span>
+    <p class="footer-title">Te quiero muchísimo, mamá</p>
+    <p class="footer-sub">Feliz Día de la Madre · 2026</p>
+    <div class="footer-copyright">
+      <p>
+        © 2026 Hecho con todo el amor del mundo por
+        <a href="#">Coque</a>
+        &nbsp;·&nbsp; Todos los derechos reservados
+        &nbsp;·&nbsp; Creado especialmente para mamá 💐
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
